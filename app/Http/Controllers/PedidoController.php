@@ -57,8 +57,31 @@ class PedidoController extends Controller
         $pdf = PDF::loadView('pedido.pdf', ['pedido' => $pedido, 'otros' => $otros, 'now' => $now, 'clientes' => $clientes, 'dfecha' => $dfecha, 'mfecha' => $mfecha, 'afecha' => $afecha])
             ->setPaper('a4', 'portrait');
 
+            $pdf->render();
+             
+            return $pdf->stream("REMISION #$pedido->id $dfecha-$mfecha-$afecha.pdf", ['Attachment' => false]);;
+        }
 
-        return $pdf->stream();
+    public function verPDF($id)
+    {
+        $pedido = Order::find($id);
+        $clientes = Cliente::where('id', $pedido->cliente_id)->get();
+        $fecha = Carbon::parse($pedido->fechaentrega);
+        $mfecha = $fecha->month;
+        $dfecha = $fecha->day;
+        $afecha = $fecha->year;
+        $now = Carbon::now();
+        $otros = OrderProduct::where('order_id', $id)->get();
+
+
+
+        $pdf = PDF::loadView('pedido.pdf', ['pedido' => $pedido, 'otros' => $otros, 'now' => $now, 'clientes' => $clientes, 'dfecha' => $dfecha, 'mfecha' => $mfecha, 'afecha' => $afecha])
+            ->setPaper('a4', 'portrait');
+
+            
+    
+            
+        return $pdf->stream("$pedido->id.pdf", ['Attachment' => false]);
     }
 
 
