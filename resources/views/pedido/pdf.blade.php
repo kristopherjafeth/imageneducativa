@@ -47,6 +47,21 @@
                 @foreach ($clientes as $cliente)
                 <th scope="col" style="font-weight: 400; font-size:14px; border:1px solid #000;">{{ $cliente->identificacion }}</th>
                 @endforeach
+                
+            </tr>
+        </thead>
+        <thead class="thead">
+            <tr>
+            <th scope="col" style="font-size:14px; border:1px solid #000;">CORREO:</th>
+                @foreach ($clientes as $cliente)
+                <th scope="col" style="font-weight: 400; font-size:14px; border:1px solid #000;">@if($cliente->email === NULL)
+                    NO POSEE CORREO
+                     @else
+                     {{ $cliente->email}}
+                    @endif</th>
+                    <th scope="col" style="font-size:14px; border-top:1px solid #000; border-bottom:1px solid #000; border-left:1px solid #fff;"></th>
+                    <th scope="col" style="font-size:14px; border-top:1px solid #000; border-bottom:1px solid #000;  border-right:1px solid #000;"></th>
+                @endforeach
             </tr>
         </thead>
         <tbody>
