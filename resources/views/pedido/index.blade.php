@@ -128,7 +128,7 @@ Pedido
                             </div>
                         </div>
                     </div>
-                    {!! $pedidos->links() !!}
+                 
                 </div>
             </div>
         </div>
