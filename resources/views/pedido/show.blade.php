@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-8 col-xs-12">
-                                <img class="navbar-brand-full" src="{{ asset('img/encabezado.png') }}" width="100%"
+                                <img class="navbar-brand-full p-5" src="{{ asset('img/encabezado.png') }}" width="324rem"
                                     alt="" />
                             </div>
                             <div class="col-lg-4 col-xs-12">
@@ -73,26 +73,33 @@
 
 
                         </div>
-                        @foreach ($clientes as $cliente)
+                       
                             <div class="infocliente"
                                 style="border: solid #000 1px; border-radius: 10px; padding:10px; margin-top:2rem; color:#000;">
                                 <div class="row">
-                                    <div class="col-8 pt-2 pb-2">
+                                 
+                                @foreach ($clientesvista as $cliente)
+                                
+                                    <div class="col-lg-4 col-xs-12 pt-2 pb-2">
                                         <strong> Señores:</strong> {{ $cliente->nombre }}
                                     </div>
-                                    <div class="col-4 pt-2 pb-2">
+                                    <div class="col-lg-4 col-xs-12 pt-2 pb-2">
                                         <strong> NIT: </strong> {{ $cliente->identificacion }}
                                     </div>
 
-                                    <div class="col-8 pb-2 pb-2">
+                                    <div class="col-lg-4 col-xs-12 pb-2 pb-2">
                                         <strong> Dirección: </strong>{{ $cliente->direccion }}
                                     </div>
-                                    <div class="col-4 pb-2 pb-2">
+                                    <div class="col-lg-4 col-xs-12 pb-2 pb-2">
                                         <strong> Telefono: </strong> {{ $cliente->telefono }}
                                     </div>
+                                    <div class="col-lg-4 col-xs-12pb-2 pb-2">
+                                        <strong> Correo: </strong> {{ $cliente->email }}
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
-                        @endforeach
+                     
 
                         <div class="cuerpopedido p-5" style="color:#000;">
 

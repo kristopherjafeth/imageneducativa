@@ -62,27 +62,7 @@ class PedidoController extends Controller
             return $pdf->stream("REMISION #$pedido->id $dfecha-$mfecha-$afecha.pdf", ['Attachment' => false]);;
         }
 
-    public function verPDF($id)
-    {
-        $pedido = Order::find($id);
-        $clientes = Cliente::where('id', $pedido->cliente_id)->get();
-        $fecha = Carbon::parse($pedido->fechaentrega);
-        $mfecha = $fecha->month;
-        $dfecha = $fecha->day;
-        $afecha = $fecha->year;
-        $now = Carbon::now();
-        $otros = OrderProduct::where('order_id', $id)->get();
-
-
-
-        $pdf = PDF::loadView('pedido.pdf', ['pedido' => $pedido, 'otros' => $otros, 'now' => $now, 'clientes' => $clientes, 'dfecha' => $dfecha, 'mfecha' => $mfecha, 'afecha' => $afecha])
-            ->setPaper('a4', 'portrait');
-
-            
-    
-            
-        return $pdf->stream("$pedido->id.pdf", ['Attachment' => false]);
-    }
+  
 
 
     public function create()
@@ -145,23 +125,19 @@ class PedidoController extends Controller
 
     public function show($id)
     {
+
         $pedido = Order::find($id);
-
-
-
+        $clientesvista = Cliente::where('id', $pedido->cliente_id)->get();
         $fecha = Carbon::parse($pedido->fechaentrega);
         $mfecha = $fecha->month;
         $dfecha = $fecha->day;
         $afecha = $fecha->year;
 
-        $clientes = Cliente::where('id', $id)->get();
-
-
         $otros = OrderProduct::where('order_id', $id)->get();
 
 
 
-        return view('pedido.show', compact('pedido', 'fecha', 'mfecha', 'dfecha', 'afecha', 'clientes', 'otros'));
+        return view('pedido.show', compact('pedido', 'fecha', 'mfecha', 'dfecha', 'afecha', 'clientesvista', 'otros'));
     }
 
 
