@@ -15,11 +15,11 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-lg-8 col-xs-12">
                                 <img class="navbar-brand-full" src="{{ asset('img/encabezado.png') }}" width="100%"
                                     alt="" />
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-xs-12">
 
                                 <div class="row">
                                     <div class="col-12 p-2"
