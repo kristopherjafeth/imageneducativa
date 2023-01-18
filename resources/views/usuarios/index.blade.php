@@ -12,18 +12,18 @@
                       <div class="card-body">                           
                           <a class="btn btn-warning" href="{{ route('usuarios.create') }}">Nuevo</a>        
                          
-                          <table class="display responsive " width="100%" id="tabla">
-                              <thead style="background-color:#0a3d5e;">                                     
-                                  <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Nombre</th>
-                                  <th style="color:#fff;">E-mail</th>
-                                  <th style="color:#fff;">Rol</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                          <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                              <thead>                                     
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>E-mail</th>
+                                  <th>Rol</th>
+                                  <th>Acciones</th>                                                                   
                               </thead>
                               <tbody>
                                 @foreach ($usuarios as $usuario)
                                   <tr>
-                                    <td style="display: none;">{{ $usuario->id }}</td>
+                                    <td>{{ $usuario->id }}</td>
                                     <td>{{ $usuario->name }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
