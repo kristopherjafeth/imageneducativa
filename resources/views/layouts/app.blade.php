@@ -79,15 +79,11 @@
         color: #000;
     }
 
-    thead {
-        background-color: #0a3d5e;
-        color:#fff;
-
-    }
+   
     tbody{
         color: #000;
-        font-size: 1rem;
-        font-weight: 600;
+      
+        font-weight: 500;
         font-family: 'poppins', sans-serif;
     }
 
