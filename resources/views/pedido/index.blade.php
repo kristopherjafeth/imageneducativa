@@ -36,14 +36,14 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="display responsive " width="100%" id="tabla">
+                        <table id="tabla" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                                 <thead class="thead">
                                     <tr>
                                         <th>ID</th>
                                         <th>Cliente</th>
+
                                         <th>Carpeta</th>
-                                        <th>Medida</th>                                      
-                                       <th>Otros</th>
+                                        <th>Otros</th>                                      
                                         <th>Entrega</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
@@ -53,8 +53,8 @@
                                     @foreach ($pedidos as $pedido)
                                         <tr>
                                             <td>{{ $pedido->id }}</td>
-
                                             <td>{{ $pedido->cliente->nombre }}</td>
+
                                             <td>
                                                 @if($pedido->carpeta === NULL)
                                                 NINGUNO
@@ -69,15 +69,10 @@
                                                  {{ $pedido->medida->nombremedida }}
                                                 @endif
                                             </td>
+                                            
                                         
                                            
-                                          <td>
-                                            @can('ver-pedido')
-                                            <a class="btn btn-sm btn-primary "
-                                            href="{{ route('pedidos.show', $pedido->id) }}">
-                                        VER OTROS</a>
-                                            @endcan
-                                          </td>
+                                      
                                             <td>
                                                 {{ $pedido->fechaentrega }}
 
@@ -157,8 +152,9 @@
             max-width: 1200px
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.1/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
 @endsection
 
@@ -186,9 +182,6 @@
     <script>
         $(document).ready(function() {
             var table = $('#tabla').DataTable({
-                responsive: true,
-                paging: false,
-
                 language: {
                     "decimal": "",
                     "emptyTable": "No hay información",
@@ -212,12 +205,10 @@
 
 
             });
-
-            new $.fn.dataTable.FixedHeader(table);
         });
     </script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
 @endsection
