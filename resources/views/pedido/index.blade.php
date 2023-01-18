@@ -102,11 +102,9 @@ Pedido
                                                 <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST" class="formulario-eliminar">
 
                                                     @can('ver-pedido')
-                                                    <a class="btn btn-sm btn-warning " href="{{ route('pedido.pdf', $pedido->id) }}"><i class="fa fa-fw fa-print"></i>IMPRIMIR</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('pedido.pdf', $pedido->id) }}"><i class="fa fa-fw fa-print"></i>IMPRIMIR</a>
                                                     @endcan
-                                                    @can('ver-pedido')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('pedidos.show', $pedido->id) }}"><i class="fa fa-fw fa-eye"></i>VER</a>
-                                                    @endcan
+                                                 
 
 
                                                     @can('editar-pedido')
