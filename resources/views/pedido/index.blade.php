@@ -106,7 +106,9 @@ Pedido
                                                     @endcan
                                                  
 
-
+                                                    @can('ver-pedido')
+                                                    <a class="btn btn-sm btn-info " href="{{ route('pedidos.show', $pedido->id) }}"><i class="fa fa-fw fa-eye"></i>VER</a>
+                                                    @endcan
                                                     @can('editar-pedido')
                                                     <a class="btn btn-sm btn-success" href="{{ route('pedidos.edit', $pedido->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @endcan

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $pedidosData = Order::select(DB::raw("COUNT(*) as count"))
+        ->whereYear("created_at", date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
+
+        return view('home', compact('pedidosData'));
     }
 }
