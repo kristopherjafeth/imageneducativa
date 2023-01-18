@@ -39,7 +39,7 @@
                                 <thead class="thead">
                                     <tr>
                                         
-										<th>Nombrecolor</th>
+										<th>Nombre del Color</th>
 
                                         <th>Acciones</th>
                                     </tr>
