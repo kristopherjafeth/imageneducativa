@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+use App\Models\Order;
+ $pedidosData = Order::select(DB::raw("COUNT(*) as count"))
+        ->whereYear("created_at", date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
+@endphp
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Panel de Control</h3>
@@ -76,7 +83,6 @@
                                         <div class="card-block">
                                             <h5>Pedidos</h5>
                                             @php
-                                            use App\Models\Order;
                                             $cant_blogs = Order::count();
                                             @endphp
                                             <h2 class="text-right"><i class="fa-solid fas fa-shopping-cart f-left"></i></i><span>{{ $cant_blogs }}</span>

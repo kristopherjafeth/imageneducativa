@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
  */
 class ClienteController extends Controller
 {
-    
+
     function __construct()
     {
          $this->middleware('permission:ver-cliente|crear-cliente|editar-cliente|borrar-cliente', ['only' => ['index']]);
@@ -23,7 +23,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $clientes = Cliente::paginate('5');
+        $clientes = Cliente::paginate();
 
         return view('cliente.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
